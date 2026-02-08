@@ -50,7 +50,7 @@ def solution():
     # 수많은 dp[A][B][C] 배열 중, 문자열이 존재하면 바로 리턴
     for prev2 in range(3):
         for prev1 in range(3):
-            if dp[count[A]][count[B]][count[C]][prev2][j] != '':
+            if dp[count[A]][count[B]][count[C]][prev2][prev1] != '':
                 return dp[count[A]][count[B]][count[C]][prev2][prev1]
     # 없으면 -1
     return -1
