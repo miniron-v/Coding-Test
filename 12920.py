@@ -16,22 +16,19 @@ items = []
 for _ in range(n):
     v, c, k = map(int, input().split())
     i = 1   # 이번에 묶을 개수
-    while i <= k:
+    while k > 0:
+        i = min(i, k)
         items.append((v * i, c * i))    # (무게, 가치)
 
         k -= i
-        i *= 2
+        i <<= 1
 
-    # 남은 걸 묶어서 한번 더
-    if k > 0:
-        items.append((v * k, c * k))
+print(items)
 
 # DP (1차원 냅색)
 dp = [0] * (m + 1)
-for item in items:
-    weight, value = item[0], item[1]
-
-    for j in range(m, weight-1, -1):
-        dp[j] = max(dp[j], dp[j-weight] + value)
+for weight, value in items:
+    for i in range(m, weight - 1, -1):
+        dp[i] = max(dp[i], dp[i - weight] + value)
 
 print(dp[m])
