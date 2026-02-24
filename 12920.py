@@ -22,9 +22,7 @@ for _ in range(n):
 
         k -= i
         i <<= 1
-
-print(items)
-
+        
 # DP (1차원 냅색)
 dp = [0] * (m + 1)
 for weight, value in items:
